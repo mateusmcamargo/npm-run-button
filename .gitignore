@@ -1,0 +1,14 @@
+out
+node_modules
+_site
+Gemfile.lock
+**/*.vsix
+.vscode-test
+.wdio-vscode-service
+*-CHANGELOG.txt
+
+# local environment and editor files
+.env
+.env.*
+!.env.example
+.DS_Store

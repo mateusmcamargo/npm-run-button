@@ -1,0 +1,97 @@
+{
+    "name": "npm-dev-button",
+    "displayName": "NPM Dev Button for Status Bar",
+    "description": "Status bar button that runs 'npm run dev' in a custom terminal and opens the server in your browser.",
+    "version": "0.4.0",
+    "publisher": "mateusmcamargo",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mateusmcamargo/npm-dev-button.git"
+    },
+    "icon": "images/icon.png",
+    "engines": {
+        "vscode": "^1.93.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "npm",
+        "dev",
+        "server",
+        "vite",
+        "next",
+        "live server",
+        "terminal",
+        "easy",
+        "custom",
+        "button",
+        "status bar"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./extension.js",
+    "scripts": {
+        "package": "vsce package"
+    },
+    "contributes": {
+        "commands": [
+            {
+                "command": "npmDevButton.toggle",
+                "title": "NPM Dev: Start / Stop server"
+            }
+        ],
+        "configuration": {
+            "title": "NPM Dev Button",
+            "properties": {
+                "npmDevButton.command": {
+                    "type": "string",
+                    "default": "npm run dev",
+                    "description": "Command executed when the button is clicked."
+                },
+                "npmDevButton.workingDirectory": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Subfolder (relative to the workspace folder) where the command runs. Useful in monorepos, e.g. 'apps/web'. Empty = workspace root."
+                },
+                "npmDevButton.terminalName": {
+                    "type": "string",
+                    "default": "dev",
+                    "description": "Name of the created terminal."
+                },
+                "npmDevButton.terminalIcon": {
+                    "type": "string",
+                    "default": "developer-tools",
+                    "description": "Icon of the created terminal. ID of a codicon (https://microsoft.github.io/vscode-codicons/dist/codicon.html)."
+                },
+                "npmDevButton.terminalColor": {
+                    "type": "string",
+                    "default": "terminal.ansiMagenta",
+                    "description": "Color of the created terminal. ID of a theme color (e.g. terminal.ansiGreen, terminal.ansiCyan, terminal.ansiMagenta)."
+                },
+                "npmDevButton.shellPath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Path to bash. Empty = 'bash' on Linux/macOS and the default profile on Windows (e.g. C:\\Program Files\\Git\\bin\\bash.exe)."
+                },
+                "npmDevButton.fallbackUrl": {
+                    "type": "string",
+                    "default": "http://localhost:5173",
+                    "description": "URL used when it cannot be detected from the terminal output."
+                },
+                "npmDevButton.openBrowser": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Open the default browser when the server is up."
+                },
+                "npmDevButton.startupTimeoutSeconds": {
+                    "type": "number",
+                    "default": 60,
+                    "description": "Maximum time to wait for the server to respond before giving up on opening the browser."
+                }
+            }
+        }
+    }
+}
