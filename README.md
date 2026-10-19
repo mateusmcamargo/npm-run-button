@@ -39,21 +39,21 @@ A convenient and lightweight status bar button for VS Code inspired by [Live Ser
 
 ## Features
 
-- **One-click start:** renders the <code><img src="./icons/play.png" width="12" height="12" alt="▶" /> npm run dev</code> button on the right side of the status bar whenever the workspace contains a `package.json`.
-- **Dedicated terminal:** opens a bash terminal with customizable name, icon and color.
-- **Automatic URL detection:** reads the terminal output to find the server URL printed by Vite, Next.js, Create React App and similar tools, works even when the port changes.
-- **Opens when ready:** the browser opens only after the server actually responds, never on a blank "connection refused" page.
-- **One-click stop:** while running, the button turns into a magenta <code><img src="./icons/debug-stop.png" width="12" height="12" alt="■" /> Stop Dev</code>. Clicking it again closes the terminal and stops the server.
-- **Stays in sync.** If the process exits on its own (`Ctrl+C`, a crash) or you close the terminal, the button returns to its initial state.
-- **Monorepo friendly.** Pick a subfolder with `workingDirectory`, or choose the folder from a list in multi-root workspaces.
-- **Remote ready.** Works in WSL, Remote SSH and GitHub Codespaces, because the URL goes through VS Code's port forwarding.
+- **One-click start:** renders the <code><img src="./icons/debug-start.png" width="12" height="12" alt="▶" /> npm run dev</code> button on the right side of the status bar whenever the workspace contains a `package.json`;
+- **Dedicated terminal:** opens a bash terminal with customizable name, icon and color;
+- **Automatic URL detection:** reads the terminal output to find the server URL printed by Vite, Next.js, Create React App and similar tools, works even when the port changes;
+- **Opens when ready:** the browser opens only after the server actually responds, never on a blank "connection refused" page;
+- **One-click stop:** while running, the button turns into a magenta <code><img src="./icons/debug-stop.png" width="12" height="12" alt="■" /> Stop Dev</code>. Clicking it again closes the terminal and stops the server;
+- **Stays in sync.** If the process exits on its own (`Ctrl+C`, a crash) or you close the terminal, the button returns to its initial state;
+- **Monorepo friendly.** Pick a subfolder with `workingDirectory`, or choose the folder from a list in multi-root workspaces;
+- **Remote ready.** Works in WSL, Remote SSH and GitHub Codespaces, because the URL goes through VS Code's port forwarding;
 - **Any package manager.** Swap the command for `pnpm dev`, `yarn dev`, `bun dev` or anything else.
 
 ## How it works
 
-1. The extension creates the custom terminal.
-2. It runs the command through VS Code's *shell integration* and reads the output, looking for a local URL (`localhost`, `127.0.0.1`, `0.0.0.0` or `[::1]`).
-3. It polls that URL until the server answers, then opens it in your default browser.
+1. The extension creates the custom terminal;
+2. It runs the command through VS Code's *shell integration* and reads the output, looking for a local URL (`localhost`, `127.0.0.1`, `0.0.0.0` or `[::1]`);
+3. It polls that URL until the server answers, then opens it in your default browser;
 4. If *shell integration is not available*, the extension sends the command to the terminal and polls the fallback URL (`http://localhost:5173` by default) instead.
 
 ## Requirements
@@ -68,21 +68,21 @@ A convenient and lightweight status bar button for VS Code inspired by [Live Ser
 
 **From the Marketplace**
 
-1. Open the Extensions view (`Ctrl+Shift+X`).
-2. Search for **NPM Dev Button for Status Bar**.
+1. Open the Extensions view (`Ctrl+Shift+X`);
+2. Search for **NPM Dev Button for Status Bar**;
 3. Click **Install**.
 
 **From a `.vsix` file**
 
 ```bash
-code --install-extension npm-dev-button-0.4.0.vsix
+code --install-extension npm-dev-button-0.4.1.vsix
 ```
 
 ## Usage
 
-1. Open a project that has a `package.json` with a `dev` script.
-2. Click <code><img src="./icons/play.png" width="12" height="12" alt="▶" /> npm run dev</code> in the status bar.
-3. Wait for your browser to open on the running app.
+1. Open a project that has a `package.json` with a `dev` script;
+2. Click <code><img src="./icons/debug-start.png" width="12" height="12" alt="▶" /> npm run dev</code> in the status bar;
+3. Wait for your browser to open on the running app;
 4. Click <code><img src="./icons/debug-stop.png" width="12" height="12" alt="■" /> Stop Dev</code> when you are done.
 
 You can also open the Command Palette with `Ctrl+Shift+P` and run **NPM Dev: Start / Stop server**.
@@ -180,7 +180,7 @@ An installed copy of the extension is running next to the development copy. Unin
 npx @vscode/vsce package
 
 # install it
-code --install-extension npm-dev-button-0.4.0.vsix
+code --install-extension npm-dev-button-0.4.1.vsix
 ```
 
 ## Contributing

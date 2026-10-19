@@ -1,4 +1,4 @@
-# Development and test files
+# development and test files
 .vscode/**
 .vscode-test/**
 .wdio-vscode-service/**
@@ -7,7 +7,7 @@ out/test/**
 src/**
 **/*.map
 
-# Repository and documentation
+# repository and documentation
 .git/**
 .github/**
 docs/**
@@ -20,7 +20,10 @@ Gemfile.lock
 _config.yml
 vsc-extension-quickstart.md
 
-# Development configuration
+# assets not needed at runtime
+icons/**
+
+# development configuration
 .gitignore
 tsconfig.json
 tslint.json
@@ -28,5 +31,5 @@ tslint.json
 appveyor.yml
 package-lock.json
 
-# Extension packages
+# extension packages
 **/*.vsix

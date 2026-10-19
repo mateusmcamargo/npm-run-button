@@ -25,7 +25,7 @@ function updateStatusBar() {
         statusItem.color = new vscode.ThemeColor('terminal.ansiMagenta');
         statusItem.backgroundColor = undefined;
     } else {
-        statusItem.text = `$(play) ${cfg().get('command')}`;
+        statusItem.text = `$(debug-start) ${cfg().get('command')}`;
         statusItem.tooltip = 'Start the development server';
         statusItem.color = undefined;
         statusItem.backgroundColor = undefined;
