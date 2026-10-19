@@ -12,3 +12,5 @@ Gemfile.lock
 .env.*
 !.env.example
 .DS_Store
+
+*.zip
