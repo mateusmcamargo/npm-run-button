@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.1
+
+### Fixed
+- Pressing `Ctrl+C` after the browser had opened (or with `openBrowser` off) no longer shows a false "ended before the server was ready" warning.
+- README: outdated "How it works" step and settings descriptions, inconsistent feature list, and the `.vsix` install command is no longer tied to a fixed version.
+
+### Added
+- `bugs` and `homepage` links in `package.json`.
+
 ## 0.5.0
 
 ### Fixed

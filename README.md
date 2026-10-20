@@ -44,17 +44,17 @@ A convenient and lightweight status bar button for VS Code inspired by [Live Ser
 - **Automatic URL detection:** reads the terminal output to find the server URL printed by Vite, Next.js, Create React App and similar tools, works even when the port changes;
 - **Opens when ready:** the browser opens only after the server actually responds, never on a blank "connection refused" page;
 - **One-click stop:** while running, the button turns into a magenta <code><img src="./icons/debug-stop.png" width="12" height="12" alt="■" /> Stop Dev</code>. Clicking it again closes the terminal and stops the server;
-- **Stays in sync.** If the process exits on its own (`Ctrl+C`, a crash) or you close the terminal, the button returns to its initial state;
-- **Monorepo friendly.** Pick a subfolder with `workingDirectory`, or choose the folder from a list in multi-root workspaces;
-- **Remote ready.** Works in WSL, Remote SSH and GitHub Codespaces, because the URL goes through VS Code's port forwarding;
-- **Any package manager.** Swap the command for `pnpm dev`, `yarn dev`, `bun dev` or anything else.
+- **Stays in sync:** if the process exits on its own (`Ctrl+C`, a crash) or you close the terminal, the button returns to its initial state;
+- **Monorepo friendly:** pick a subfolder with `workingDirectory`, or choose the folder from a list in multi-root workspaces;
+- **Remote ready:** works in WSL, Remote SSH and GitHub Codespaces, because the URL goes through VS Code's port forwarding;
+- **Any package manager:** swap the command for `pnpm dev`, `yarn dev`, `bun dev` or anything else.
 
 ## How it works
 
 1. The extension creates the custom terminal;
 2. It runs the command through VS Code's *shell integration* and reads the output, looking for a local URL (`localhost`, `127.0.0.1`, `0.0.0.0` or `[::1]`);
-3. It polls that URL until the server answers, then opens it in your default browser;
-4. If *shell integration is not available*, the extension sends the command to the terminal and polls the fallback URL (`http://localhost:5173` by default) instead.
+3. It waits until the server accepts connections, then opens the URL in your default browser;
+4. If *shell integration is not available* (or the output has no URL), the extension sends the command as plain text and looks for a port that started listening: the fallback URL (`http://localhost:5173` by default) and the usual dev ports.
 
 ## Requirements
 
@@ -62,7 +62,7 @@ A convenient and lightweight status bar button for VS Code inspired by [Live Ser
 |---|---|
 | VS Code **1.93** or newer | Needed for the terminal *shell integration* API used for URL detection. |
 | Node.js and a package manager | `npm` by default. |
-| `bash` | Default on Linux and macOS. On Windows, use [Git Bash](https://git-scm.com/) (see [Windows](#windows)). |
+| `bash` | Default on Linux and macOS. Not required on Windows, where the default terminal profile is used (see [Windows](#windows)). |
 
 ## Installation
 
@@ -108,9 +108,9 @@ Find them under **Settings > Extensions > NPM Dev Button**, or edit `settings.js
 | `npmDevButton.terminalIcon` | `developer-tools` | ID of a [codicon](https://microsoft.github.io/vscode-codicons/dist/codicon.html). |
 | `npmDevButton.terminalColor` | `terminal.ansiMagenta` | ID of a theme color, e.g. `terminal.ansiGreen` or `terminal.ansiCyan`. |
 | `npmDevButton.shellPath` | `""` | Path to bash. Empty means `bash` on Linux/macOS and the default profile on Windows. |
-| `npmDevButton.fallbackUrl` | `http://localhost:5173` | URL used when it cannot be detected from the terminal output. |
+| `npmDevButton.fallbackUrl` | `http://localhost:5173` | URL used when the address cannot be read from the terminal output (e.g. shell integration off). Other common dev ports are checked too. |
 | `npmDevButton.openBrowser` | `true` | Open the default browser when the server is up. |
-| `npmDevButton.startupTimeoutSeconds` | `60` | Maximum time to wait for the server to respond before giving up on opening the browser. |
+| `npmDevButton.startupTimeoutSeconds` | `60` | Maximum time (minimum 5) to wait for the server, counted from the moment the command starts, before giving up on opening the browser. |
 
 ### Example
 
@@ -132,6 +132,10 @@ A pnpm monorepo with the web app in `apps/web`, a cyan terminal with the name 'D
 ### Windows
 
 Without `shellPath`, the default terminal profile is used (usually PowerShell). To force Git Bash, point `npmDevButton.shellPath` to Git's `bash.exe`. Avoid the WSL `bash.exe`, which changes the working directory.
+
+### Restricted Mode
+
+The extension runs a command from your project, so it is disabled in [Restricted Mode](https://code.visualstudio.com/docs/editor/workspace-trust) and in virtual workspaces. Trust the workspace to use it.
 
 ### Browser
 

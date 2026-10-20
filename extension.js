@@ -429,7 +429,6 @@ async function openWhenReady(s, settings) {
     const opened = await vscode.env.openExternal(external);
     if (signal.aborted) return;
 
-    s.opened = true;
     if (!opened) notify('warning', `The browser could not be opened. The server is running at ${external.toString()}`);
 }
 
@@ -473,6 +472,9 @@ async function start() {
         await launch(s, settings);
         if (s.abort.signal.aborted) return;
         await openWhenReady(s, settings);
+        // startup phase is over (browser opened, disabled or given up on): from now on the command
+        // ending by itself, e.g. with ctrl+c, is a normal thing and not worth a warning
+        s.opened = true;
     } catch (error) {
         if (s && session === s) stop();
         showError(error);
