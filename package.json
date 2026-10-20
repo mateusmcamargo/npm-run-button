@@ -2,7 +2,7 @@
     "name": "npm-dev-button",
     "displayName": "NPM Dev Button for Status Bar",
     "description": "Status bar button that runs 'npm run dev' in a custom terminal and opens the server in your browser.",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "publisher": "mateusmcamargo",
     "license": "MIT",
     "repository": {
@@ -41,6 +41,10 @@
             {
                 "command": "npmDevButton.toggle",
                 "title": "NPM Dev: Start / Stop server"
+            },
+            {
+                "command": "npmDevButton.showLog",
+                "title": "NPM Dev: Show Log"
             }
         ],
         "configuration": {
@@ -79,7 +83,7 @@
                 "npmDevButton.fallbackUrl": {
                     "type": "string",
                     "default": "http://localhost:5173",
-                    "description": "URL used when it cannot be detected from the terminal output."
+                    "description": "URL used when the server address cannot be read from the terminal output (for example when shell integration is off). Other common dev ports are also checked."
                 },
                 "npmDevButton.openBrowser": {
                     "type": "boolean",
@@ -89,9 +93,17 @@
                 "npmDevButton.startupTimeoutSeconds": {
                     "type": "number",
                     "default": 60,
-                    "description": "Maximum time to wait for the server to respond before giving up on opening the browser."
+                    "minimum": 5,
+                    "description": "Maximum time (in seconds) to wait for the server, counting from the moment the command starts, before giving up on opening the browser."
                 }
             }
         }
+    },
+    "capabilities": {
+        "untrustedWorkspaces": {
+            "supported": false,
+            "description": "This extension runs a command from the workspace in a terminal, so it is disabled in Restricted Mode."
+        },
+        "virtualWorkspaces": false
     }
 }

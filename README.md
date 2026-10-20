@@ -75,7 +75,7 @@ A convenient and lightweight status bar button for VS Code inspired by [Live Ser
 **From a `.vsix` file**
 
 ```bash
-code --install-extension npm-dev-button-0.4.1.vsix
+code --install-extension npm-dev-button-0.5.0.vsix
 ```
 
 ## Usage
@@ -94,6 +94,7 @@ You can also open the Command Palette with `Ctrl+Shift+P` and run **NPM Dev: Sta
 | Command | ID | Description |
 |---|---|---|
 | NPM Dev: Start / Stop server | `npmDevButton.toggle` | Starts the server if it is stopped, stops it if it is running. |
+| NPM Dev: Show Log | `npmDevButton.showLog` | Opens the extension log (what was detected, which port was opened, why it failed). |
 
 ## Extension Settings
 
@@ -152,7 +153,12 @@ Values set in your own `settings.json` (or workspace settings) override the exte
 <details>
 <summary><strong>The browser did not open</strong></summary>
 
-The server URL could not be detected or did not respond in time. Set `npmDevButton.fallbackUrl` to the right address and increase `npmDevButton.startupTimeoutSeconds` if your server takes longer to start.
+Run **NPM Dev: Show Log** from the Command Palette: it tells what the extension saw and why it gave up.
+
+- *"shell integration is not available"*: the server address cannot be read from the terminal, so the extension looks for a newly listening port (`fallbackUrl` and the usual ports such as 3000, 4200, 5173 and 8080). If your server uses another port, set `npmDevButton.fallbackUrl`. Also check that `terminal.integrated.shellIntegration.enabled` is on.
+- *"No server was found within Ns"*: the server is slow to start. Increase `npmDevButton.startupTimeoutSeconds`.
+- *"ended with exit code N"*: the command failed. Read the `dev` terminal output.
+- Something else is already using the port: stop it first, or set `fallbackUrl` to the new port.
 
 </details>
 
@@ -180,7 +186,7 @@ An installed copy of the extension is running next to the development copy. Unin
 npx @vscode/vsce package
 
 # install it
-code --install-extension npm-dev-button-0.4.1.vsix
+code --install-extension npm-dev-button-0.5.0.vsix
 ```
 
 ## Contributing
