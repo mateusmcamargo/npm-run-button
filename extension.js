@@ -76,7 +76,7 @@ function updateStatusBar() {
 function notify(kind, message) {
     log[kind === 'error' ? 'error' : 'warn'](message);
     const show = kind === 'error' ? vscode.window.showErrorMessage : vscode.window.showWarningMessage;
-    show(`NPM Dev Button: ${message}`, 'Show Log').then((choice) => {
+    show(`NPM Run Dev Button: ${message}`, 'Show Log').then((choice) => {
         if (choice) log.show(true);
     });
 }
@@ -497,10 +497,10 @@ function onExecutionEnd(s, exitCode) {
 }
 
 function activate(context) {
-    log = vscode.window.createOutputChannel('NPM Dev Button', { log: true });
+    log = vscode.window.createOutputChannel('NPM Run Dev Button', { log: true });
 
     statusItem = vscode.window.createStatusBarItem('npmDevButton.status', vscode.StatusBarAlignment.Right, 100);
-    statusItem.name = 'NPM Dev Button';
+    statusItem.name = 'NPM Run Dev Button';
     statusItem.command = 'npmDevButton.toggle';
     updateStatusBar();
 

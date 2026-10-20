@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.2
+
+### Changed
+- Renamed to **NPM Run Dev Button for Status Bar** (`npm-run-dev-button`), with the repository, Marketplace links and command titles updated. Setting and command IDs keep the `npmDevButton` prefix, so existing settings still work.
+
 ## 0.5.1
 
 ### Fixed

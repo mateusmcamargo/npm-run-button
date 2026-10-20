@@ -1,18 +1,18 @@
 {
     "name": "npm-dev-button",
-    "displayName": "NPM Dev Button for Status Bar",
+    "displayName": "NPM Run Dev Button for Status Bar",
     "description": "Status bar button that runs 'npm run dev' in a custom terminal and opens the server in your browser.",
-    "version": "0.5.1",
+    "version": "0.5.2",
     "publisher": "mateuscamargo",
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/mateusmcamargo/npm-dev-button.git"
+        "url": "https://github.com/mateusmcamargo/npm-run-dev-button.git"
     },
     "bugs": {
-        "url": "https://github.com/mateusmcamargo/npm-dev-button/issues"
+        "url": "https://github.com/mateusmcamargo/npm-run-dev-button/issues"
     },
-    "homepage": "https://github.com/mateusmcamargo/npm-dev-button#readme",
+    "homepage": "https://github.com/mateusmcamargo/npm-run-dev-button#readme",
     "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.93.0"
@@ -31,7 +31,9 @@
         "easy",
         "custom",
         "button",
-        "status bar"
+        "status bar",
+        "tools",
+        "customizable"
     ],
     "activationEvents": [
         "onStartupFinished"
@@ -44,15 +46,15 @@
         "commands": [
             {
                 "command": "npmDevButton.toggle",
-                "title": "NPM Dev: Start / Stop server"
+                "title": "NPM Run Dev: Start / Stop server"
             },
             {
                 "command": "npmDevButton.showLog",
-                "title": "NPM Dev: Show Log"
+                "title": "NPM Run Dev: Show Log"
             }
         ],
         "configuration": {
-            "title": "NPM Dev Button",
+            "title": "NPM Run Dev Button",
             "properties": {
                 "npmDevButton.command": {
                     "type": "string",
