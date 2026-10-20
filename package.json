@@ -3,7 +3,7 @@
     "displayName": "NPM Dev Button for Status Bar",
     "description": "Status bar button that runs 'npm run dev' in a custom terminal and opens the server in your browser.",
     "version": "0.5.1",
-    "publisher": "mateusmcamargo",
+    "publisher": "mateuscamargo",
     "license": "MIT",
     "repository": {
         "type": "git",

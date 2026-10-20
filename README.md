@@ -26,9 +26,9 @@ A convenient and lightweight status bar button for VS Code inspired by [Live Ser
 <!--
   Enable these after publishing to the Visual Studio Marketplace:
 
-  [![Version](https://img.shields.io/visual-studio-marketplace/v/mateusmcamargo.npm-dev-button)](https://marketplace.visualstudio.com/items?itemName=mateusmcamargo.npm-dev-button)
-  [![Installs](https://img.shields.io/visual-studio-marketplace/i/mateusmcamargo.npm-dev-button)](https://marketplace.visualstudio.com/items?itemName=mateusmcamargo.npm-dev-button)
-  [![Rating](https://img.shields.io/visual-studio-marketplace/r/mateusmcamargo.npm-dev-button)](https://marketplace.visualstudio.com/items?itemName=mateusmcamargo.npm-dev-button&ssr=false#review-details)
+  [![Version](https://img.shields.io/visual-studio-marketplace/v/mateuscamargo.npm-dev-button)](https://marketplace.visualstudio.com/items?itemName=mateuscamargo.npm-dev-button)
+  [![Installs](https://img.shields.io/visual-studio-marketplace/i/mateuscamargo.npm-dev-button)](https://marketplace.visualstudio.com/items?itemName=mateuscamargo.npm-dev-button)
+  [![Rating](https://img.shields.io/visual-studio-marketplace/r/mateuscamargo.npm-dev-button)](https://marketplace.visualstudio.com/items?itemName=mateuscamargo.npm-dev-button&ssr=false#review-details)
 -->
 
 <!-- Add a short demo here (GIF or MP4 converted to GIF, ~800px wide):
